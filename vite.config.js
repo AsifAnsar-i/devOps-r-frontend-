@@ -6,8 +6,9 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "https://backend-devops-r.onrender.com",
-        secure: false,
+        target: "https://backend-devops-r.onrender.com", // Make sure this is correct
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ""),
       },
     },
   },
